@@ -20,12 +20,11 @@ project(${PROJECT_NAME}
 pico_sdk_init()
 
 add_library(FreeRTOS STATIC
-    ${FREERTOS_PATH}/event_groups.c
     ${FREERTOS_PATH}/list.c
     ${FREERTOS_PATH}/queue.c
-    ${FREERTOS_PATH}/stream_buffer.c
     ${FREERTOS_PATH}/tasks.c
     ${FREERTOS_PATH}/timers.c
+    ${FREERTOS_PATH}/portable/MemMang/heap_3.c
     ${FREERTOS_PATH}/portable/GCC/ARM_CM0/port.c
 )
 
@@ -34,3 +33,5 @@ target_include_directories(FreeRTOS PUBLIC
     ${FREERTOS_PATH}/include
     ${FREERTOS_PATH}/portable/GCC/ARM_CM0
 )
+
+add_subdirectory(examples)
